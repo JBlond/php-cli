@@ -1,4 +1,8 @@
 # php-cli
+
+[![Code Climate](https://codeclimate.com/github/JBlond/php-cli/badges/gpa.svg)](https://codeclimate.com/github/JBlond/php-cli)
+
+
 php command line / cli scritping classes
 
 Inspired by the php.net docs
