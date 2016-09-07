@@ -4,3 +4,6 @@ engines:
     checks:
       Controversial/CamelCaseClassName:
         enabled: false
+ratings:
+  paths:
+  - src/**
