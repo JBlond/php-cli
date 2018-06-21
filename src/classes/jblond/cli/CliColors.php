@@ -52,18 +52,18 @@ class CliColors {
 	 * @return string
 	 */
 	public function getColoredString($string, $foregroundColor = null, $backgroundColor = null){
-		$colored_string = '';
+		$coloredString = '';
 
 		if(isset($this->foregroundColors["$foregroundColor"])){
-			$colored_string .= "\033[" . $this->foregroundColors[$foregroundColor] . "m";
+			$coloredString .= "\033[" . $this->foregroundColors[$foregroundColor] . "m";
 		}
 
 		if(isset($this->backgroundColors["$backgroundColor"])){
-			$colored_string .= "\033[" . $this->backgroundColors[$backgroundColor] . "m";
+			$coloredString .= "\033[" . $this->backgroundColors[$backgroundColor] . "m";
 		}
 
-		$colored_string .= $string . "\033[0m";
-		return $colored_string;
+		$coloredString .= $string . "\033[0m";
+		return $coloredString;
 	}
 
 	/**
