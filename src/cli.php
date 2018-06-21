@@ -8,5 +8,3 @@ $cli->output($string);
 $cli->error($string);
 echo $cli->input('Hello world: ',array('Hello','world'));
 echo $cli->input('Test2: ', 'test');
-//print_r($colors->getForegroundColors());
-//print_r($colors->getBackgroundColors());
