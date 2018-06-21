@@ -1,30 +1,30 @@
 <?php
-namespace jblond;
+namespace jblond\cli;
 
 
 /**
  * Class cli
- * @package jblond
+ * @package jblond\helper
  */
-class cli {
+class Cli {
 
 	/**
 	 * @param string $prompt
-	 * @param array|string $valid_inputs
+	 * @param array|string $validInputs
 	 * @param string $default
 	 * @return string
 	 */
-	public function input($prompt, $valid_inputs, $default = ''){
+	public function input($prompt, $validInputs, $default = ''){
 		echo $prompt;
 		$input = trim(fgets(fopen('php://stdin', 'r')));
 		while(
 			!isset($input) ||
 			(
-				is_array($valid_inputs) &&
-				!in_array($input, $valid_inputs)
+				is_array($validInputs) &&
+				!in_array($input, $validInputs)
 			) ||
 			(
-				$valid_inputs == 'is_file' &&
+				$validInputs == 'is_file' &&
 				!is_file($input)
 			)
 		){

@@ -1,19 +1,18 @@
 <?php
-namespace jblond;
+namespace jblond\cli;
 
 /**
- * Class cli_colors
+ * Class CliColors
  *
- * works on bash
- *
- * @package jblond
+ * Works on bash
+ * @package jblond\helper
  */
-class cli_colors {
+class CliColors {
 
 	/**
 	 * @var array
 	 */
-	private $foreground_colors = array(
+	private $foregroundColors = array(
 		'black' => '0;30',
 		'dark_gray' => '1;30',
 		'blue' => '0,34',
@@ -35,7 +34,7 @@ class cli_colors {
 	/**
 	 * @var array
 	 */
-	private $background_colors = array(
+	private $backgroundColors = array(
 		'black' => '40',
 		'red' => '41',
 		'green' => '42',
@@ -46,25 +45,24 @@ class cli_colors {
 		'light_gray' => '47'
 	);
 
-
 	/**
 	 * @param string $string
 	 * @param null|string $foreground_color
 	 * @param null|string $background_color
 	 * @return string
 	 */
-	public function get_colored_string($string, $foreground_color = null, $background_color = null){
+	public function getColoredString($string, $foreground_color = null, $background_color = null){
 		$colored_string = '';
 
-		if(isset($this->foreground_colors["$foreground_color"])){
-			$colored_string .= "\033[" . $this->foreground_colors[$foreground_color] . "m";
+		if(isset($this->foregroundColors["$foreground_color"])){
+			$colored_string .= "\033[" . $this->foregroundColors[$foreground_color] . "m";
 		}
 
-		if(isset($this->background_colors["$background_color"])){
-			$colored_string .= "\033[" . $this->background_colors[$background_color] . "m";
+		if(isset($this->backgroundColors["$background_color"])){
+			$colored_string .= "\033[" . $this->backgroundColors[$background_color] . "m";
 		}
 
-		$colored_string .=  $string . "\033[0m";
+		$colored_string .= $string . "\033[0m";
 		return $colored_string;
 	}
 
@@ -73,17 +71,16 @@ class cli_colors {
 	 *
 	 * @return array
 	 */
-	public function get_foreground_colors() {
-		return array_keys($this->foreground_colors);
+	public function getForegroundColors() {
+		return array_keys($this->foregroundColors);
 	}
-
 
 	/**
 	 * Returns all background color names
 	 *
 	 * @return array
 	 */
-	public function get_background_colors() {
-		return array_keys($this->background_colors);
+	public function getBackgroundColors() {
+		return array_keys($this->backgroundColors);
 	}
 }
