@@ -50,8 +50,8 @@ class Cli {
 	 * @param string $string
 	 */
 	public function error($string){
-		$std_error = fopen('php://stderr', 'w');
-		fwrite($std_error, $string);
-		fclose($std_error);
+		$stdError = fopen('php://stderr', 'w');
+		fwrite($stdError, $string);
+		fclose($stdError);
 	}
 }
