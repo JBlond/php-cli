@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "jblond\\": "src/jblond/classes/jblond/cli"
+            "jblond\\": "src/classes/jblond/cli"
         }
     }
 }
