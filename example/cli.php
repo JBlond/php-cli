@@ -1,6 +1,6 @@
 <?php
-require 'classes/jblond/cli/Cli.php';
-require 'classes/jblond/cli/CliColors.php';
+require '../src/jblond/cli/Cli.php';
+require '../src//jblond/cli/CliColors.php';
 $cli = new \jblond\cli\Cli();
 $colors = new \jblond\cli\CliColors();
 $string = $colors->getColoredString('This is a test','red','black');
