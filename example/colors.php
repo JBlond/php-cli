@@ -16,6 +16,6 @@ foreach ($allForegroundColors as $color) {
         $cli->output(
             $colors->getColoredString($color . ' on ' . $bgColor, $color, $bgColor)
         );
-        $cli->output($colors->getColoredString(' ', 'default', 'default'));
+        $cli->output($colors->getColoredString(' ', 'black', 'black'));
     }
 }

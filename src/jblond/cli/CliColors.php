@@ -50,18 +50,21 @@ class CliColors {
 	 * @param null|string $foregroundColor
 	 * @param null|string $backgroundColor
 	 * @return string
+     * @throws \InvalidArgumentException
 	 */
 	public function getColoredString($string, $foregroundColor = null, $backgroundColor = null){
 		$coloredString = '';
 
-		if(isset($this->foregroundColors["$foregroundColor"])){
-			$coloredString .= "\033[" . $this->foregroundColors[$foregroundColor] . "m";
+		if(!isset($this->foregroundColors["$foregroundColor"])){
+			throw new \InvalidArgumentException(sprintf('Invalid option specified: "%s". Expected one of (%s).', $foregroundColor, implode(', ', array_keys($this->foregroundColors))));
 		}
 
-		if(isset($this->backgroundColors["$backgroundColor"])){
-			$coloredString .= "\033[" . $this->backgroundColors[$backgroundColor] . "m";
+		if(!isset($this->backgroundColors["$backgroundColor"])){
+            throw new \InvalidArgumentException(sprintf('Invalid option specified: "%s". Expected one of (%s).', $backgroundColor, implode(', ', array_keys($this->backgroundColors))));
 		}
 
+        $coloredString .= "\033[" . $this->foregroundColors[$foregroundColor] . "m";
+        $coloredString .= "\033[" . $this->backgroundColors[$backgroundColor] . "m";
 		$coloredString .= $string . "\033[0m";
 		return $coloredString;
 	}
