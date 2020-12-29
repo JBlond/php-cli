@@ -1,6 +1,8 @@
 <?php
 namespace jblond\cli;
 
+use InvalidArgumentException;
+
 /**
  * Class CliColors
  *
@@ -15,6 +17,7 @@ class CliColors {
 	private $foregroundColors = array(
 		'black' => '0;30',
 		'dark_gray' => '5;30',
+		'grey' => '5;30',
 		'red' => '1;31',
 		'light_red' => '1;31',
 		'green' => '0;32',
@@ -50,21 +53,19 @@ class CliColors {
 	 * @param null|string $foregroundColor
 	 * @param null|string $backgroundColor
 	 * @return string
-     * @throws \InvalidArgumentException
+	 * @throws InvalidArgumentException
 	 */
 	public function getColoredString($string, $foregroundColor = null, $backgroundColor = null){
 		$coloredString = '';
 
 		if(!isset($this->foregroundColors["$foregroundColor"])){
-			throw new \InvalidArgumentException(sprintf('Invalid option specified: "%s". Expected one of (%s).', $foregroundColor, implode(', ', array_keys($this->foregroundColors))));
+			throw new InvalidArgumentException(sprintf('Invalid option specified: "%s". Expected one of (%s).', $foregroundColor, implode(', ', array_keys($this->foregroundColors))));
 		}
 
-		if(!isset($this->backgroundColors["$backgroundColor"])){
-            throw new \InvalidArgumentException(sprintf('Invalid option specified: "%s". Expected one of (%s).', $backgroundColor, implode(', ', array_keys($this->backgroundColors))));
+		$coloredString .= "\033[" . $this->foregroundColors[$foregroundColor] . "m";
+		if(isset($this->backgroundColors["$backgroundColor"])) {
+			$coloredString .= "\033[" . $this->backgroundColors[$backgroundColor] . "m";
 		}
-
-        $coloredString .= "\033[" . $this->foregroundColors[$foregroundColor] . "m";
-        $coloredString .= "\033[" . $this->backgroundColors[$backgroundColor] . "m";
 		$coloredString .= $string . "\033[0m";
 		return $coloredString;
 	}
