@@ -58,12 +58,12 @@ class CliColors {
 	public function getColoredString($string, $foregroundColor = null, $backgroundColor = null){
 		$coloredString = '';
 
-		if(!isset($this->foregroundColors["$foregroundColor"])){
+		if(!isset($this->foregroundColors[(string) $foregroundColor])){
 			throw new InvalidArgumentException(sprintf('Invalid option specified: "%s". Expected one of (%s).', $foregroundColor, implode(', ', array_keys($this->foregroundColors))));
 		}
 
 		$coloredString .= "\033[" . $this->foregroundColors[$foregroundColor] . "m";
-		if(isset($this->backgroundColors["$backgroundColor"])) {
+		if(isset($this->backgroundColors[(string) $backgroundColor])) {
 			$coloredString .= "\033[" . $this->backgroundColors[$backgroundColor] . "m";
 		}
 		$coloredString .= $string . "\033[0m";
@@ -75,7 +75,8 @@ class CliColors {
 	 *
 	 * @return array
 	 */
-	public function getForegroundColors() {
+	public function getForegroundColors(): array
+    {
 		return array_keys($this->foregroundColors);
 	}
 
@@ -84,7 +85,8 @@ class CliColors {
 	 *
 	 * @return array
 	 */
-	public function getBackgroundColors() {
+	public function getBackgroundColors(): array
+    {
 		return array_keys($this->backgroundColors);
 	}
 }
