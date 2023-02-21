@@ -56,7 +56,8 @@ class CliColors {
 	 * @return string
 	 * @throws InvalidArgumentException
 	 */
-	public function getColoredString($string, $foregroundColor = null, $backgroundColor = null){
+	public function getColoredString(string $string, ?string $foregroundColor = null, ?string $backgroundColor = null): string
+    {
 		$coloredString = '';
 
 		if(!isset($this->foregroundColors[(string) $foregroundColor])){
