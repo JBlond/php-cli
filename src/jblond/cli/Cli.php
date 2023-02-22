@@ -17,36 +17,29 @@ class Cli {
     public function input(string $prompt, $validInputs, string $default = ''): string
     {
         echo $prompt;
-
         $input = trim(fgets(fopen('php://stdin', 'rb')));
-
-        while (true) {
-            if ($input === '' && $default !== '') {
-                return $default;
+        while(
+            !isset($input) ||
+            (
+                is_array($validInputs) &&
+                !in_array($input, $validInputs, true)
+            ) ||
+            (
+                $validInputs === 'is_file' &&
+                !is_file($input)
+            ) ||
+            (
+                !empty($validInputs) && $input !== $validInputs
+            )
+        ){
+            echo $prompt;
+            $input = trim(fgets(fopen('php://stdin', 'rb')));
+            if(empty($input) && !empty($default)) {
+                $input = $default;
             }
-
-            if ($validInputs === 'is_file' && !is_file($input)) {
-                echo $prompt;
-                $input = trim(fgets(STDIN));
-                continue;
-            }
-
-            if (is_array($validInputs) && !in_array($input, $validInputs, true)) {
-                echo $prompt;
-                $input = trim(fgets(STDIN));
-                continue;
-            }
-
-            if (is_string($validInputs) && !empty($validInputs) && ($input !== $validInputs)) {
-                echo $prompt;
-                $input = trim(fgets(STDIN));
-                continue;
-            }
-
-            return $input;
         }
+        return $input;
     }
-
 
     /**
      * @param string $output
