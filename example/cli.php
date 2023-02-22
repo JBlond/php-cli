@@ -14,6 +14,7 @@ $cli->output($string);
 $cli->error($string);
 $cli->input('Hello world: ',array('Hello','world'));
 $cli->input('Test2: ', 'test');
+$cli->input('Free input: ', '');
 
 $answer = $cli->input('Do this? y/N', array('y','n','Y','N'), 'N');
 echo $answer;

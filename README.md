@@ -31,6 +31,11 @@ $cli->input('Hello world: ',array('Hello','world'));
 
 $cli->input('Test2: ', 'test');
 
+
+// This input requires any input
+
+$cli->input('Free input: ', '');
+
 // Question with default N 
 $answer = $cli->input('Do this? y/N', array('y','n','Y','N'), 'N');
 echo $answer;
