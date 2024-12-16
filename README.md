@@ -1,7 +1,5 @@
 # php-cli
 
-[![Code Climate](https://codeclimate.com/github/JBlond/php-cli/badges/gpa.svg)](https://codeclimate.com/github/JBlond/php-cli)
-
 ##
 
 ```bash
