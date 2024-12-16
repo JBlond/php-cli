@@ -93,10 +93,10 @@ class Core
 
     /**
      * @param $data
-     * @param $newline
+     * @param string $newline
      * @return void
      */
-    public function hex_dump( $data, $newline = "\n" ): void
+    public function hex_dump($data, string $newline = "\n" ): void
     {
         static $from = '';
         static $to = '';
@@ -125,7 +125,7 @@ class Core
     {
         try {
             $data = random_bytes( 3072 );
-        } Catch(\Exception $e){
+        } Catch(Exception $e){
             $data = 'NEVER EVER';
         }
         $this->hex_dump($data);
