@@ -33,9 +33,12 @@ class Cli {
             )
         ){
             echo $prompt;
-            $input = trim(fgets(fopen('php://stdin', 'rb')));
             if(empty($input) && !empty($default)) {
                 $input = $default;
+            }
+            else
+            {
+                $input = trim(fgets(fopen('php://stdin', 'rb')));
             }
         }
         return $input;
