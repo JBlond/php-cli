@@ -29,7 +29,7 @@ class Cli {
                 !is_file($input)
             ) ||
             (
-                !empty($validInputs) && $input !== $validInputs
+                !empty($validInputs) && is_string($validInputs) && $input !== $validInputs
             )
         ){
             echo $prompt;
