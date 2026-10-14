@@ -72,7 +72,7 @@ return [
 	// A file list that defines files that will be excluded
 	// from parsing and analysis and will not be read at all.
 	//
-	// This is useful for excluding hopelessly unanalyzable
+	// This is useful for excluding hopelessly unanalysabel
 	// files that can't be removed for whatever reason.
 	'exclude_file_list' => [],
 

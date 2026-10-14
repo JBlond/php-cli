@@ -1,11 +1,12 @@
 {
     "name": "jblond/php-cli",
     "type": "library",
-    "description": "php command line / cli scritping classes",
+    "description": "php command line / cli scripting classes",
     "license": "MIT",
     "keywords": [
         "php",
-        "diff"
+        "diff",
+        "php-cli"
     ],
     "authors": [
         {
