@@ -39,6 +39,17 @@ $answer = $cli->input('Do this? y/N', array('y','n','Y','N'), 'N');
 echo $answer;
 ```
 
+### Parameter example
+
+```PHP
+<?php
+$cli = new Cli();
+$cli->addOption('v')->addOption('output', 'file.txt')->addOption('threads', 8);
+$command = 'my-program ' . $cli->buildArguments();
+echo $command;
+exec($command, $output, $returnCode);
+```
+
 Inspired by the php.net docs
 http://php.net/manual/en/features.commandline.io-streams.php
 
